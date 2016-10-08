@@ -6,11 +6,15 @@ log:
 storage:
     cache:
         layerinfo: inmemory
-    filesystem:
-        rootdirectory: /storage
     maintenance:
         uploadpurging:
             enabled: false
+    oss:
+        accesskeyid: $oss_access_key_id
+        accesskeysecret: $oss_access_key_secret
+        region: $oss_region
+        bucket: $oss_bucket
+        rootdirectory: $oss_rootdirectory
     delete:
         enabled: true
 http:

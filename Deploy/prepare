@@ -47,6 +47,11 @@ email_ssl = rcp.get("configuration", "email_ssl")
 harbor_admin_password = rcp.get("configuration", "harbor_admin_password")
 auth_mode = rcp.get("configuration", "auth_mode")
 ldap_url = rcp.get("configuration", "ldap_url")
+oss_access_key_id = rcp.get("configuration","oss_access_key_id")
+oss_access_key_secret = rcp.get("configuration","oss_access_key_secret")
+oss_region = rcp.get("configuration","oss_region")
+oss_bucket = rcp.get("configuration","oss_bucket")
+oss_rootdirectory = rcp.get("configuration","oss_rootdirectory")
 # this two options are either both set or unset
 if rcp.has_option("configuration", "ldap_searchdn"):
     ldap_searchdn = rcp.get("configuration", "ldap_searchdn")
@@ -150,7 +155,12 @@ render(os.path.join(templates_dir, "ui", "app.conf"),
 
 render(os.path.join(templates_dir, "registry", "config.yml"),
         registry_conf,
-        ui_url=ui_url)
+        ui_url=ui_url,
+        oss_access_key_id=oss_access_key_id,
+        oss_access_key_secret=oss_access_key_secret,
+        oss_region=oss_region,
+        oss_bucket=oss_bucket,
+        oss_rootdirectory=oss_rootdirectory)
 
 render(os.path.join(templates_dir, "db", "env"),
         db_conf_env,
